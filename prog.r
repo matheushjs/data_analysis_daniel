@@ -29,3 +29,12 @@ print(summary(model));
 
 model = lm(d[,1] ~ d[,2] + llog)
 print(summary(model));
+
+plot3d(data$GTI, data$GFSI, data$GPI, type="p", col="#BBBBBB", size=10, xlab="GTI", ylab="GFSI", zlab="GPI", xlim=c(0, 9), ylim=c(0, 90), zlim=c(0, 3.8));
+model = lm(data$GPI ~ data$GTI + data$GFSI);
+coefs <- coef(model)
+a <- coefs["data$GTI"]
+b <- coefs["data$GFSI"]
+c <- -1
+d <- coefs["(Intercept)"]
+planes3d(a, b, c, d, alpha=0.5, col="#0000FF");
